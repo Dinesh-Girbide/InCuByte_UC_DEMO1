@@ -1,0 +1,3 @@
+micronaut:
+  application:
+    name: useCaseDemo_Online
