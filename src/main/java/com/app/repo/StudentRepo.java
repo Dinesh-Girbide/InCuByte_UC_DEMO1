@@ -1,7 +1,10 @@
 package com.app.repo;
 
 import com.app.pojo.Student;
+import io.micronaut.data.repository.CrudRepository;
 
-public class StudentRepo implements CrudRepository<Integer,Student> {
+
+public interface StudentRepo extends CrudRepository<Student, Integer> {
+
 
 }

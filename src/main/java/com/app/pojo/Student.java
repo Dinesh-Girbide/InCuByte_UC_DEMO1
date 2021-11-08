@@ -1,8 +1,20 @@
 package com.app.pojo;
 
-public class Student {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Student implements Comparable<Integer> {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
   private Integer id;
   private String name;
+
+  public Student() {
+  }
 
   public Integer getId() {
     return id;
@@ -18,5 +30,9 @@ public class Student {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public int compareTo(Integer anotherInteger) {
+    return id.compareTo(anotherInteger);
   }
 }
