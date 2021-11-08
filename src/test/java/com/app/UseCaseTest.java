@@ -1,6 +1,7 @@
 package com.app;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
+import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
 
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
@@ -17,12 +18,12 @@ public class UseCaseTest {
           .haveSimpleNameEndingWith("Repo");
 
   @ArchTest
-  static final ArchRule class_residing_in_service_package_should_have_name_ending_with_services =
+  static final ArchRule class_residing_in_service_package_should_have_name_ending_with_service =
       classes().that().resideInAPackage("..service..").should()
           .haveSimpleNameEndingWith("Service");
 
   @ArchTest
-  static final ArchRule class_residing_in_controller_package_should_be_annotated_with_controller_annotation =
+  static final ArchRule class_residing_in_controller_package_should_be_annotated_with_restcontroller_annotation =
       classes().that().resideInAPackage("..controller..").should()
           .beAnnotatedWith(RestController.class);
 
@@ -32,18 +33,14 @@ public class UseCaseTest {
       classes().that().resideInAPackage("..controller..").should()
           .haveSimpleNameEndingWith("Controller");
 
-//  //  @ArchTest
-////  static final ArchRule class_annotated_with_controller_annotation_should_not_depends_directly_on_repository =
-////      layeredArchitecture()
-////          .layer("Controller").definedBy("..controller..")
-////          .layer("Service").definedBy("..service..")
-////          .layer("Repository").definedBy("..repo..")
-////
-////          .whereLayer("Controller").mayNotBeAccessedByAnyLayer()
-////          .whereLayer("Repository").mayOnlyBeAccessedByLayers("Service")
-////          .whereLayer("Service").mayOnlyBeAccessedByLayers("Controller");
-//  @ArchTest
-//  static final ArchRule class_annotated_with_controller_annotation_should_not_depends_directly_on_repository =
-//      noClasses().that().resideInAPackage("com.app.controller").should().dependOnClassesThat()
-//          .resideInAPackage("com.app.repo");
+  @ArchTest
+  static final ArchRule layer_check =
+      layeredArchitecture()
+          .layer("Controller").definedBy("..controller..")
+          .layer("Service").definedBy("..service..")
+          .layer("Repository").definedBy("..repo..")
+          .whereLayer("Controller").mayNotBeAccessedByAnyLayer()
+          .whereLayer("Repository").mayOnlyBeAccessedByLayers("Service")
+          .whereLayer("Service").mayOnlyBeAccessedByLayers("Controller");
+
 }

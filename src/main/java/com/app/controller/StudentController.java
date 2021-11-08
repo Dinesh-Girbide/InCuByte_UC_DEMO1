@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StudentController {
   private StudentService studentServices;
-  private StudentRepo s;
+  //private StudentRepo s;
 
-  public StudentController(StudentService studentServices,StudentRepo s) {
+  public StudentController(StudentService studentServices/*,StudentRepo s*/) {
     this.studentServices = studentServices;
-    this.s=s;
+    //this.s=s;
   }
 }
