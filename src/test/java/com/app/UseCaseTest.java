@@ -20,4 +20,8 @@ public class UseCaseTest {
   static final ArchRule class_residing_in_service_package_should_have_name_ending_with_services =
       classes().that().resideInAPackage("com.app.service").should()
           .haveSimpleNameEndingWith("Services");
+  @ArchTest
+  static final ArchRule class_residing_in_controller_package_should_have_name_ending_with_controller=
+      classes().that().resideInAPackage("com.app.controller").should()
+          .haveSimpleNameEndingWith("Controller");
 }
