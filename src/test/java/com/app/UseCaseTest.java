@@ -15,7 +15,7 @@ public class UseCaseTest {
   @ArchTest
   static final ArchRule interface_extending_crudrepository_should_have_name_ending_with_repository =
       classes().that().areInterfaces().should().beAssignableTo(CrudRepository.class).andShould()
-          .haveSimpleNameEndingWith("Repo");
+          .haveSimpleNameEndingWith("Repository");
 
   @ArchTest
   static final ArchRule class_residing_in_service_package_should_have_name_ending_with_service =

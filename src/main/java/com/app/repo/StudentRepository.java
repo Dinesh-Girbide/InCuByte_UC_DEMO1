@@ -4,7 +4,7 @@ import com.app.pojo.Student;
 import io.micronaut.data.repository.CrudRepository;
 
 
-public interface StudentRepo extends CrudRepository<Student, Integer> {
+public interface StudentRepository extends CrudRepository<Student, Integer> {
 
 
 }

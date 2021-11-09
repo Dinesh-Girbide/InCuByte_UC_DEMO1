@@ -1,19 +1,19 @@
 package com.app.service;
 
 import com.app.pojo.Teacher;
-import com.app.repo.TeacherRepo;
+import com.app.repo.TeacherRepository;
 
 
 public class TeacherService {
 
-  private TeacherRepo teacherRepo;
+  private TeacherRepository teacherRepository;
 
-  public TeacherService(TeacherRepo teacherRepo) {
-    this.teacherRepo = teacherRepo;
+  public TeacherService(TeacherRepository teacherRepository) {
+    this.teacherRepository = teacherRepository;
   }
 
   public Iterable<Teacher> getTeacherList() {
-    return teacherRepo.findAll();
+    return teacherRepository.findAll();
   }
 
 }

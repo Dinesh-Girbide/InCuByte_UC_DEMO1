@@ -2,14 +2,14 @@ package com.app.service;
 
 
 import com.app.pojo.Student;
-import com.app.repo.StudentRepo;
+import com.app.repo.StudentRepository;
 
 
 public class StudentService {
 
-  private StudentRepo studentRepo;
+  private StudentRepository studentRepo;
 
-  public StudentService(StudentRepo studentRepo) {
+  public StudentService(StudentRepository studentRepo) {
     this.studentRepo = studentRepo;
   }
 
